@@ -1,0 +1,353 @@
+<!-- Custom HTML site displayed as the Home chapter -->
+
+{% extends "main.html" %}
+{% block tabs %}
+{{ super() }}
+<style>
+    .md-main {
+        flex-grow: 0
+    }
+
+    .md-main__inner {
+        display: flex;
+        height: 100%;
+    }
+
+    .tx-container {
+        padding-top: .0rem;
+        /* background: #008AD7; */
+        /* background: linear-gradient(to bottom, var(--md-primary-fg-color), rgb(204, 222, 255) 99%,#fff 99%) */
+    }
+
+    /* .tx-container {
+        padding-top: .0rem;
+        background: linear-gradient(to bottom, var(--md-primary-fg-color), hsla(160deg,47%,55%,1) 99%,#fff 99%)
+    } */
+
+    .tx-hero {
+        margin: 32px 2.8rem;
+        /* color: var(--md-primary-bg-color); */
+        justify-content: center;
+    }
+
+    .tx-hero h1 {
+        margin-bottom: 1rem;
+        color: currentColor;
+        font-weight: 700
+    }
+
+    .tx-hero__content {
+        padding-bottom: 1rem;
+        margin: 0 auto;
+        /* color: #008AD7 */
+    }
+
+    .tx-hero__image {
+        width: 17rem;
+        height: 17rem;
+        order: 1;
+        padding-right: 2.5rem;
+    }
+
+    .tx-hero .md-button {
+        margin-top: .5rem;
+        margin-right: .5rem;
+        /* color: var(--md-primary-bg-color) */
+    }
+
+    .feature-item h2 svg {
+        height: 30px;
+        float: left;
+        margin-right: 10px;
+        transform: translateY(10%);
+    }
+
+    .top-hr {
+        margin-top: 42px;
+    }
+
+    .feature-item {
+        font-family: 'Product Sans';
+        font-weight: 300;
+        box-sizing: border-box;
+        padding: 0 15px;
+        word-break: break-word
+    }
+
+    .feature-item h2 {
+        color: #008AD7;
+        font-weight: 300;
+        font-size: 25px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: normal;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: inherit;
+
+    }
+
+    .feature-item p {
+        font-size: 16px;
+        line-height: 1.8em;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        color: #111;
+        margin: 0 0 10px;
+        display: block;
+    }
+
+    @media screen and (max-width:30em) {
+        .tx-hero h1 {
+            font-size: 1.4rem
+        }
+    }
+
+    @media screen and (min-width:60em) {
+        .md-sidebar--secondary {
+            display: none
+        }
+
+        .tx-hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #008AD7;
+        }
+
+        .tx-hero__content {
+            max-width: 22rem;
+            margin-top: 3.5rem;
+            margin-bottom: 3.5rem;
+            margin-left: 1.0rem;
+            margin-right: 4.0rem;
+            align-items: center;
+
+        }
+    }
+
+    @media screen and (min-width:76.25em) {
+        .md-sidebar--primary {
+            display: none
+        }
+
+        .top-hr {
+            width: 100%;
+            display: flex;
+            max-width: 61rem;
+            margin-right: auto;
+            margin-left: auto;
+            padding: 0 .2rem;
+        }
+
+        .bottom-hr {
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            max-width: 61rem;
+            margin-right: auto;
+            margin-left: auto;
+            padding: 0 .2rem;
+        }
+
+        .feature-item {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .feature-item:hover {
+            background-color: #E1F4FF;
+            border-radius: 3px;
+        }
+
+        /* .feature-item:hover {
+            background-color: #acb8ff47;
+            border-radius: 3px;
+        }*/
+    }
+
+    .hr {
+        border-bottom: 1px solid #eee;
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .text-center {
+        text-align: center;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 15px;
+        font-family: 'Product Sans';
+        font-size: 23px;
+        font-weight: 300;
+        padding-bottom: 10px;
+    }
+
+    .logos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: row wrap;
+        margin: 0 auto;
+    }
+
+    .logos img {
+        flex: 1 1 auto;
+        padding: 25px;
+        max-height: 130px;
+        vertical-align: middle;
+    }
+
+    .hr-logos {
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+    .md-footer-meta__inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 1.0rem;
+    }
+
+    .md-footer-social {
+        padding-top: 20px;
+    }
+</style>
+
+<!-- Main site Entry button descriptions -->
+<section class="tx-container">
+    <div class="md-grid md-typeset">
+        <div class="tx-hero">
+            <div class="tx-hero__image">
+                <img src="assets/index.png" draggable="false">
+            </div>
+            <div class="tx-hero__content"> <img src="assets/setcloudup-logo.png" draggable="false" width="250"
+                    height="250">
+                <p>A pure player of <b>Digital Transformation.</b>
+                    <br>
+                    We help companies build their Cloud Native DataPlatforms and acheive their Data Driven Strategy.
+                    We offer a wide range of IT services and Kubernetes trainings.
+                </p>
+                <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}"
+                    class="md-button md-button--primary">
+                    Services
+                </a>
+                <a href="{{ config.base_url }}/training/training-catalog" title="{{ lang.t('source.link.title') }}" class="md-button">
+                    Training
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main site box descriptions -->
+<div class="top-hr">
+    <div class="feature-item">
+        <h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#008AD7" class="bi bi-server"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M7.646 5.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2z" />
+                <path
+                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z" />
+            </svg>
+            <a href="{{ config.base_url }}/services/#our-technological-expertise" title="{{ page.next_page.title | striptags }}"
+                class="md-button md-button">
+                Cloud Computing
+            </a>
+        </h2>
+        <p>Migrate your legacy on-premise applications to Cloud Computing infrastures like AWS, Azure and GCP. Reduce
+            your Ops costs and pay as you go.</p>
+    </div>
+    <div class="feature-item">
+        <h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#008AD7" class="bi bi-server"
+                viewBox="0 0 16 16">
+                <path
+                    d="M1.333 2.667C1.333 1.194 4.318 0 8 0s6.667 1.194 6.667 2.667V4c0 1.473-2.985 2.667-6.667 2.667S1.333 5.473 1.333 4V2.667z" />
+                <path
+                    d="M1.333 6.334v3C1.333 10.805 4.318 12 8 12s6.667-1.194 6.667-2.667V6.334a6.51 6.51 0 0 1-1.458.79C11.81 7.684 9.967 8 8 8c-1.966 0-3.809-.317-5.208-.876a6.508 6.508 0 0 1-1.458-.79z" />
+                <path
+                    d="M14.667 11.668a6.51 6.51 0 0 1-1.458.789c-1.4.56-3.242.876-5.21.876-1.966 0-3.809-.316-5.208-.876a6.51 6.51 0 0 1-1.458-.79v1.666C1.333 14.806 4.318 16 8 16s6.667-1.194 6.667-2.667v-1.665z" />
+            </svg>
+            <a href="{{ config.base_url }}/services/#our-technological-expertise" title="{{ page.next_page.title | striptags }}"
+                class="md-button md-button">
+                Big Data
+            </a>
+        </h2>
+        <p>Design, build and deploy Big Data Platforms. Choose your suitable platform, Cloud Data Centric, Deltalake or
+            Lakehouse. </p>
+
+    </div>
+    <div class="feature-item">
+        <h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#008AD7" class="bi bi-boxes"
+                viewBox="0 0 16 16">
+                <path
+                    d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434L7.752.066ZM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567L4.25 7.504ZM7.5 9.933l-2.75 1.571v3.134l2.75-1.571V9.933Zm1 3.134 2.75 1.571v-3.134L8.5 9.933v3.134Zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567-2.742 1.567Zm2.242-2.433V3.504L8.5 5.076V8.21l2.75-1.572ZM7.5 8.21V5.076L4.75 3.504v3.134L7.5 8.21ZM5.258 2.643 8 4.21l2.742-1.567L8 1.076 5.258 2.643ZM15 9.933l-2.75 1.571v3.134L15 13.067V9.933ZM3.75 14.638v-3.134L1 9.933v3.134l2.75 1.571Z" />
+            </svg>
+            <a href="{{ config.base_url }}/services/#our-technological-expertise" title="{{ page.next_page.title | striptags }}"
+                class="md-button md-button">
+                API & Microservices
+            </a>
+        </h2>
+        <p>Break your monolith application into microservices and use container orchestrators like Kubernetes.</p>
+    </div>
+</div>
+
+<div class="top-hr">
+    <div class="feature-item">
+        <h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#008AD7" class="bi bi-cpu"
+                viewBox="0 0 16 16">
+                <path
+                    d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0zm-.5 3A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3h-7zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3zM6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+            </svg>
+            <a href="{{ config.base_url }}/services/#our-technological-expertise" title="{{ page.next_page.title | striptags }}"
+                class="md-button md-button">
+                Machine Larning & AI
+            </a>
+        </h2>
+        <p>Design, train and deploy at scale your Machine Learning models.</p>
+    </div>
+    <div class="feature-item">
+        <h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#008AD7" class="bi bi-code-slash"
+                viewBox="0 0 16 16">
+                <path
+                    d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z" />
+            </svg>
+            <a href="{{ config.base_url }}/services/#our-technological-expertise" title="{{ page.next_page.title | striptags }}"
+                class="md-button md-button">
+                DevSecOps
+            </a>
+        </h2>
+        <p>Strengthen your application security and improve the collaboration between developers and Ops by adopting
+            DevSecOps approach. </p>
+    </div>
+    <div class="feature-item">
+        <h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#008AD7" class="bi bi-calendar-week"
+                viewBox="0 0 16 16">
+                <path
+                    d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
+                <path
+                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+            </svg>
+            <a href="{{ config.base_url }}/services/#our-technological-expertise" title="{{ page.next_page.title | striptags }}"
+                class="md-button md-button">
+                Agile
+            </a>
+        </h2>
+        <p>Increase the rate and the quality of your delivery and reduce the time to market by applying Agile best
+            prcatices.</p>
+    </div>
+</div>
+
+{% endblock %}
+<!-- {% block content %}{% endblock %} -->
+{% block footer %}{% endblock %}
