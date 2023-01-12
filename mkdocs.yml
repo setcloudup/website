@@ -16,6 +16,7 @@ theme:
     - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking
+    - navigation.expand
     - search.highlight
     - search.share
     - search.suggest
@@ -56,28 +57,62 @@ extra:
       link: mailto:oussama.bencharrada@setcloudup.com
 
 
-copyright: Copyright &copy; 202 SETCLOUDUP
+copyright: Copyright &copy; 2023 SETCLOUDUP
 
 markdown_extensions:
-  - tables
+  - abbr
+  - admonition
   - attr_list
+  - def_list
+  - footnotes
   - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:materialx.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tilde
 
 nav:
   - Home: index.md
-  - Services: services.md 
+  - About us: about-us.md 
   - Training: 
     - Training catalog: training/training-catalog.md
     - Kubernetes: 
       - Kubernetes getting started: training/kubernetes/k8s-getting-started.md
       - Kubernetes advanced: training/kubernetes/k8s-advanced.md
-    - Big Data: 
-      - Cloud native dataplatform: training/big-data/cloud-native-dataplatform.md
+    # - Big Data: 
+    #   - Cloud native dataplatform: training/big-data/cloud-native-dataplatform.md
   - Blog: 
     - Microservice oriented data pipeline: blog/microservice-etl.md
+    - Flask REST API: 
+      - blog/rest-api/index.md
+      - Application: blog/rest-api/app.md
+      - Terraform: blog/rest-api/terraform.md
+      - Swagger: blog/rest-api/swagger.md
   - Contact: contact.md
